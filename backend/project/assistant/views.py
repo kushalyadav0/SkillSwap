@@ -9,6 +9,7 @@ from .models import Course
 from core_app.models import Profile
 from .models import SwapRequest
 import json
+from django.views.decorators.http import require_GET, require_POST
 
 MODEL_PATH = os.path.join(os.path.dirname(__file__),
                           "recsys/profile_ranker.joblib")
