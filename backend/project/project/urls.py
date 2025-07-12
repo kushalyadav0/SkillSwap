@@ -22,10 +22,11 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/core', include('core_app.urls')),
+    path('api/core/', include('core_app.urls')),
     path('api/auth/', include('djoser.urls')),
     path('api/auth/', include('djoser.urls.jwt')),
     path("assitant/", include("assistant.urls")),
+
 
     path("__reload__/", include("django_browser_reload.urls")),
 ]
