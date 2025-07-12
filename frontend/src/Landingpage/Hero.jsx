@@ -3,8 +3,11 @@ import { useState, useEffect } from 'react';
 export default function Hero() {
    // Image URLs for the slider
   const slides = [
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuCxSiA2VA8nTaIYud1ZrGjJYNbt5ZY-U27cER8zjEOT8lkX8SVGPnYG3_IWCOfAb8JO0f2m2w9C3btQEeAGHd88JGXr_KIaZbmwqFXmfNqKKW-y_DXw9cFcTS8T8iS5ympd599YIZ-zHDOojELGG9QPboZAgHcJNkLD80ixseNrOQ7LaJUQzxtP1O9z00F-Mbu5czctHH-YArUH6YrqfUg85xMdLAXpiPXExQef_BgQUZaAl6x5oz0HBmauom4s7_g0NIXX_IjdY7Lo',
-    '../img2'
+
+    '../src/assets/img2.jpg',
+    '../src/assets/img.jpg',
+    
+    
    
     
   ];
