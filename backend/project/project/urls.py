@@ -22,8 +22,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('app/', include('app.urls')),
-    path('', include('core_app.urls')),
+    path('api/core', include('core_app.urls')),
+    path('api/auth/', include('djoser.urls')),
+    path('api/auth/', include('djoser.urls.jwt')),
 
 
     path("__reload__/", include("django_browser_reload.urls")),
