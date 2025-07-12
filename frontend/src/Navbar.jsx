@@ -26,7 +26,7 @@ export default function Navbar() {
         {/* Desktop Links */}
         <nav className="hidden sm:flex items-center gap-6 text-sm font-medium text-[#0d151c]">
           <a href="#" className="hover:underline">Browse</a>
-          <a href="#" className="hover:underline">Learn</a>
+          <a href="/skillswap" className="hover:underline">Learn</a>
           <a href="#" className="hover:underline">Teach</a>
         </nav>
 
