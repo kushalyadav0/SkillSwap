@@ -2,7 +2,7 @@
 
 # Team
 - KushalYadav [Team Lead] [email](net.kushalyadav@gmail.com)
-- Aaditya Narayanyan Das [email](aditya123das123@gmail.com)
+- Aditya Narayan Das [email](aditya123das123@gmail.com)
 - Rahul Singh [email](rahulsingh51775177@gmail.com)
 - Laxman Prajapat [email](theprogrammer452023@gmail.com)
 ## PROBLEM STATEMENT: 
