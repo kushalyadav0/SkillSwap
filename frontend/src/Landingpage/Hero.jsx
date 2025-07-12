@@ -4,9 +4,9 @@ export default function Hero() {
    // Image URLs for the slider
   const slides = [
 
+    '../src/assets/img3.jpg',
     '../src/assets/img2.jpg',
     '../src/assets/img.jpg',
-    
     
    
     
