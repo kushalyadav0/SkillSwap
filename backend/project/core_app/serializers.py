@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 from .models import Profile, SwapRequest
 
+
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -16,12 +17,20 @@ class RegisterSerializer(serializers.ModelSerializer):
         )
         return user
 
+
 class ProfileSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username', read_only=True)
+    email = serializers.EmailField(source='user.email', read_only=True)
+
     class Meta:
         model = Profile
-        fields = ['id', 'name', 'location', 'availability', 'public']
+        fields = ['id', 'name', 'location', 'availability', 'public', 'username', 'email']
+
 
 class SwapRequestSerializer(serializers.ModelSerializer):
+    requester_username = serializers.CharField(source='requester.username', read_only=True)
+    receiver_username = serializers.CharField(source='receiver.username', read_only=True)
+
     class Meta:
         model = SwapRequest
         fields = '__all__'

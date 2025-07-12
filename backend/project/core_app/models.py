@@ -17,6 +17,7 @@ class Profile(models.Model):
     def __str__(self):
         return self.name or self.user.username
 
+
 class SwapRequest(models.Model):
     REQUEST_STATUS = [
         ("pending", "Pending"),
@@ -36,4 +37,4 @@ class SwapRequest(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.requester.username} -> {self.receiver.username}"
+        return f"{self.requester.username} → {self.receiver.username} | {self.status}"
