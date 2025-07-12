@@ -34,7 +34,7 @@ def courses_api(request):
     GET /api/courses/?top_k=5
     """
     user = request.user
-    profile = StudentProfile.objects.get(user=user)
+    profile = Profile.objects.get(user=user)
     student_dict = {
         "skills_wanted": profile.skills_wanted,          # List[str]
         "experience_level": profile.experience_level,    # Beginner / Intermediate / Expert
@@ -67,7 +67,7 @@ def public_profiles(request):
     """
     q      = request.GET.get("q", "").lower()
     avail  = request.GET.get("availability")
-    qs = StudentProfile.objects.filter(profile_public=True)
+    qs = Profile.objects.filter(profile_public=True)
 
     if q:
         qs = qs.filter(skills_offered__icontains=q)
