@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from .recsys.course_recommender import recommend
 from .models import Course
 from core_app.models import Profile
+from .models import SwapRequest
 
 MODEL_PATH = os.path.join(os.path.dirname(__file__),
                           "recsys/profile_ranker.joblib")
@@ -57,3 +58,54 @@ def courses_api(request):
         ],
         safe=False,
     )
+
+
+@require_GET
+def public_profiles(request):
+    """
+    GET /api/public_profiles/?q=python&availability=Weekends
+    """
+    q      = request.GET.get("q", "").lower()
+    avail  = request.GET.get("availability")
+    qs = StudentProfile.objects.filter(profile_public=True)
+
+    if q:
+        qs = qs.filter(skills_offered__icontains=q)
+    if avail:
+        qs = qs.filter(availability_days__iexact=avail)
+
+    data = [{
+        "id": p.id,
+        "name": p.user.get_full_name() or p.user.username,
+        "location": p.place,
+        "skills_offered": p.skills_offered,     # list[str]
+        "skills_wanted": p.skills_wanted,
+        "rating": p.average_rating,
+        "photo_url": p.photo.url if p.photo else "/static/img/default.jpg",
+    } for p in qs]
+
+    return JsonResponse(data, safe=False)
+
+
+# -----------------  CREATE SWAP REQUEST  -----------------
+@csrf_exempt
+@require_POST
+def create_swap(request):
+    """
+    POST /api/create_swap/
+    {
+        "requester_id": 1,
+        "requestee_id": 7,
+        "offered_skill": "Python",
+        "wanted_skill": "React"
+    }
+    """
+    import json
+    payload = json.loads(request.body)
+    swap = SwapRequest.objects.create(
+        requester_id   = payload["requester_id"],
+        requestee_id   = payload["requestee_id"],
+        offered_skill  = payload["offered_skill"],
+        wanted_skill   = payload["wanted_skill"],
+    )
+    return JsonResponse({"ok": True, "swap_id": swap.id})
