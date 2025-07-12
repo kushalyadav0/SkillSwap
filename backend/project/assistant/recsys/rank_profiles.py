@@ -1,12 +1,12 @@
 import joblib
-import pathlib
 import pandas as pd
+import pathlib
 import json
 import numpy as np
 
 MODEL_PATH = pathlib.Path(__file__).resolve().parent / "profile_ranker.joblib"
 ranker = joblib.load(MODEL_PATH)
-students = pd.read_csv("student_data_1000.csv")
+students = pd.read_csv(pathlib.Path(__file__).resolve().parent / "student_data_1000.csv")
 students["skills_offered"] = students["skills_offered"].apply(json.loads)
 students["skills_wanted"] = students["skills_wanted"].apply(json.loads)
 
