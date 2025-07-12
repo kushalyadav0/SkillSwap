@@ -1,7 +1,8 @@
 from django.urls import path
-from . import views
+from .views import chat_api, recommendations_api, courses_api
 
 urlpatterns = [
-    path("chat/", views.chat_api, name="chat_api"),
-    path("recommendations/", views.recommendations_api, name="recs_api"),
+    path("chat/", chat_api),
+    path("recommendations/", recommendations_api),
+    path("courses/", courses_api),     
 ]
