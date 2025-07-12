@@ -10,6 +10,7 @@ AVAILABILITY_CHOICES = [
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
+    skills = models.TextField(blank=True, help_text="Comma-separated skills like Photoshop, Excel")
     location = models.CharField(max_length=100, blank=True, null=True)
     availability = models.CharField(max_length=20, choices=AVAILABILITY_CHOICES, default="anytime")
     public = models.BooleanField(default=True)
@@ -30,7 +31,6 @@ class SwapRequest(models.Model):
     receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name="received_requests")
     skill_offered = models.CharField(max_length=100)
     skill_requested = models.CharField(max_length=100)
-
     message = models.TextField(blank=True)
     status = models.CharField(max_length=20, choices=REQUEST_STATUS, default="pending")
     created_at = models.DateTimeField(auto_now_add=True)

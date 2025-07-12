@@ -156,7 +156,15 @@ USE_TZ = True
 STATIC_ROOT = 'static'
 STATIC_URL = 'static/'
 STATICFILES_BASE = BASE_DIR / 'staticfiles'
-REACT_JS_BUILD_DIR =    STATICFILES_BASE / 'frontend'/ 'Django-React-Boilerplate-Code/frontend'
+REACT_JS_BUILD_DIR =    STATICFILES_BASE / 'frontend'/ 'myproject'
+STATICFILES_DIRS = [
+    BASE_DIR / 'frontend' / 'myproject' / 'dist',  # Vite default build folder
+]
+
+TEMPLATES[0]['DIRS'] = [
+    BASE_DIR / 'frontend' / 'myproject' / 'dist',
+]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
