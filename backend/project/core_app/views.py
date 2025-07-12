@@ -7,6 +7,10 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from .models import Profile, SwapRequest
 from .serializers import RegisterSerializer, ProfileSerializer, SwapRequestSerializer
+from django.views.generic import TemplateView
+
+class FrontendAppView(TemplateView):
+    template_name = "index.html"
 
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)

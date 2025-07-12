@@ -17,10 +17,13 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.urls import re_path
+from core_app.views import FrontendAppView
 
 
 
 urlpatterns = [
+    re_path(r'^.*$', FrontendAppView.as_view()),  # catch-all fallback
     path('admin/', admin.site.urls),
     path('api/core/', include('core_app.urls')),
     path('api/auth/', include('djoser.urls')),

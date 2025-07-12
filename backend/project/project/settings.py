@@ -156,9 +156,9 @@ USE_TZ = True
 STATIC_ROOT = 'static'
 STATIC_URL = 'static/'
 STATICFILES_BASE = BASE_DIR / 'staticfiles'
-REACT_JS_BUILD_DIR =    STATICFILES_BASE / 'frontend'/ 'myproject'
+REACT_JS_BUILD_DIR =    STATICFILES_BASE / 'dist'
 STATICFILES_DIRS = [
-    BASE_DIR / 'frontend' / 'myproject' / 'dist',  # Vite default build folder
+    REACT_JS_BUILD_DIR,  # Vite default build folder
 ]
 
 TEMPLATES[0]['DIRS'] = [
