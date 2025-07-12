@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,14 +31,19 @@ export default function Navbar() {
         </nav>
 
         {/* Desktop Buttons */}
-        <div className="hidden sm:flex gap-2">
-          <button className="h-10 px-4 rounded-xl bg-[#2094f3] text-white text-sm font-semibold shadow hover:bg-[#127ddb] transition">
-            Sign Up
-          </button>
-          <button className="h-10 px-4 rounded-xl bg-[#e7eef4] text-[#0d151c] text-sm font-semibold hover:bg-[#dce4eb] transition">
-            Log In
-          </button>
-        </div>
+<div className="hidden sm:flex gap-2">
+  <Link to="/signup">
+    <button className="h-10 px-4 rounded-xl bg-[#2094f3] text-white text-sm font-semibold shadow hover:bg-[#127ddb] transition">
+      Sign Up
+    </button>
+  </Link>
+  <Link to="/login">
+    <button className="h-10 px-4 rounded-xl bg-[#e7eef4] text-[#0d151c] text-sm font-semibold hover:bg-[#dce4eb] transition">
+      Log In
+    </button>
+  </Link>
+</div>
+
 
         {/* Mobile Menu Toggle */}
         <button
@@ -47,21 +53,24 @@ export default function Navbar() {
           {isOpen ? <XMarkIcon className="w-6 h-6" /> : <Bars3Icon className="w-6 h-6" />}
         </button>
       </div>
+{/* Mobile Dropdown */}
+<div className="sm:hidden mt-3 flex flex-col gap-3 px-2 text-center">
+  <a href="#" className="text-[#0d151c] text-sm font-medium hover:underline">Browse</a>
+  <a href="#" className="text-[#0d151c] text-sm font-medium hover:underline">Learn</a>
+  <a href="#" className="text-[#0d151c] text-sm font-medium hover:underline">Teach</a>
+  
+  <Link to="/signup">
+    <button className="mt-2 h-10 rounded-xl bg-[#2094f3] text-white text-sm font-semibold">
+      Sign Up
+    </button>
+  </Link>
+  <Link to="/login">
+    <button className="h-10 rounded-xl bg-[#e7eef4] text-[#0d151c] text-sm font-semibold">
+      Log In
+    </button>
+  </Link>
+</div>
 
-      {/* Mobile Dropdown */}
-      {isOpen && (
-        <div className="sm:hidden mt-3 flex flex-col gap-3 px-2 text-center">
-          <a href="#" className="text-[#0d151c] text-sm font-medium hover:underline">Browse</a>
-          <a href="#" className="text-[#0d151c] text-sm font-medium hover:underline">Learn</a>
-          <a href="#" className="text-[#0d151c] text-sm font-medium hover:underline">Teach</a>
-          <button className="mt-2 h-10 rounded-xl bg-[#2094f3] text-white text-sm font-semibold">
-            Sign Up
-          </button>
-          <button className="h-10 rounded-xl bg-[#e7eef4] text-[#0d151c] text-sm font-semibold">
-            Log In
-          </button>
-        </div>
-      )}
     </header>
   );
 }
